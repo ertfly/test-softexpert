@@ -3,7 +3,6 @@
 namespace Helpers;
 
 use Exception;
-use stdClass;
 
 class RouterHelper
 {
