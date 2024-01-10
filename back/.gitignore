@@ -1,0 +1,14 @@
+vendor/
+composer.lock
+
+/php_errors.log
+/.env
+
+/cache/*
+!/cache/.gitkeep
+tmp/*
+!tmp/.gitkeep
+logs/*
+!logs/.gitkeep
+
+/migrations/version
