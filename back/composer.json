@@ -1,0 +1,13 @@
+{
+    "name": "ertfly/test-softexpert",
+    "description": "Test SoftExpert",
+    "autoload": {
+        "psr-4": {
+          "App\\Constants\\": "app/constants/",
+          "App\\Modules\\": "app/modules/",
+          "App\\Middlewares\\": "app/middlewares/",
+          "Business\\": "business/",
+          "Helpers\\": "helpers/"
+        }
+    }
+}
