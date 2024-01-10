@@ -12,7 +12,6 @@ class RouterHelper
     private static $method;
     private static $parameters;
     private static $setting;
-    private static $request;
 
     public static function loadHelper()
     {
@@ -154,11 +153,9 @@ class RouterHelper
             if (!method_exists('\\' . self::$setting['middleware'], 'handler')) {
                 throw new Exception('Method handler is missing');
             }
-            if (is_null(self::$request)) {
-                self::$request = new stdClass;
-            }
+            
             $middleware = '\\' . self::$setting['middleware'];
-            $middleware::handler(self::$request);
+            $middleware::handler();
         }
 
         $controller = new self::$setting['controller'];
@@ -171,11 +168,6 @@ class RouterHelper
         }
         $method = self::$setting['method'];
         call_user_func_array([$controller, $method], self::$parameters);
-    }
-
-    public static function getRequest()
-    {
-        return self::$request;
     }
 
     public static function notFound()
