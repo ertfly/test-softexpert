@@ -12,6 +12,6 @@ RUN npm install --global serve
 
 RUN yarn install
 
-COPY . /app
+COPY . .
 
 CMD yarn $YARN_COMMAND
