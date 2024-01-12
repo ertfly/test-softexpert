@@ -10,8 +10,6 @@ RUN apt-get update && \
 
 RUN npm install --global serve
 
-RUN yarn install
-
 COPY . .
 
-CMD yarn $YARN_COMMAND
+CMD bash -c "yarn install && yarn $YARN_COMMAND"
