@@ -17,6 +17,11 @@ const Menu = () => {
             icon: 'fas fa-users',
             to: '/users',
         },
+        {
+            label: 'Categoria de Produtos',
+            icon: 'fas fa-cog',
+            to: '/products/categories',
+        },
     ], [])
 
     const openMain = (e, ai) => {
