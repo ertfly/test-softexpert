@@ -20,16 +20,14 @@ if (is_file(getenv('PATH_MIGRATIONS') . 'version')) {
     require_once getenv('PATH_ROOT') . 'migrations/install.php';
 }
 
-if ($version === 0) {
-    $loop = true;
-    while ($loop) {
-        if (!is_file(getenv('PATH_MIGRATIONS') . ($version + 1) . '.php')) {
-            $loop = false;
-            break;
-        }
-        $version = ($version + 1);
-        require_once getenv('PATH_ROOT') . 'migrations/' . $version . '.php';
+$loop = true;
+while ($loop) {
+    if (!is_file(getenv('PATH_MIGRATIONS') . ($version + 1) . '.php')) {
+        $loop = false;
+        break;
     }
+    $version = ($version + 1);
+    require_once getenv('PATH_ROOT') . 'migrations/' . $version . '.php';
 }
 
 file_put_contents(getenv('PATH_MIGRATIONS') . 'version', $version);

@@ -6,12 +6,14 @@ use Business\Register\Entity\UserEntity;
 use Business\Register\Repository\UserRepository;
 use Business\Register\Rule\CustomerRule;
 use Business\Register\Rule\UserRule;
+use Business\Sale\Rule\OrderRule;
 use Helpers\StringHelper;
 
 UserRule::install();
 CustomerRule::install();
 ProductCategoryRule::install();
 ProductRule::install();
+OrderRule::install();
 
 // add user default
 $fullname = 'User Test';
