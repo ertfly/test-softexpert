@@ -53,5 +53,6 @@ docker-compose build
 ```
 docker-compose up
 ```
+> **_NOTA:_**  Wait full runing, when start serve build front access http://localhost:3000
 
 > **_NOTA:_**  When vendor or node_modules install error, use zip files in folder back and front.
