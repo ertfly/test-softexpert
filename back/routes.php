@@ -19,6 +19,13 @@ return [
         ],
     ],
     \App\Middlewares\AuthMiddleware::class => [
+        \App\Modules\CustomerController::class => [
+            'get:/customer' => 'index',
+            'get:/customer/{id}' => 'view',
+            'post:/customer' => 'post',
+            'put:/customer/{id}' => 'put',
+            'delete:/customer/{id}' => 'delete',
+        ],
         \App\Modules\UserController::class => [
             'get:/user' => 'index',
             'get:/user/{id}' => 'view',

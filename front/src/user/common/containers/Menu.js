@@ -18,6 +18,11 @@ const Menu = () => {
             to: '/users',
         },
         {
+            label: 'Clientes',
+            icon: 'fas fa-cog',
+            to: '/customers',
+        },
+        {
             label: 'Categoria de Produtos',
             icon: 'fas fa-cog',
             to: '/products/categories',

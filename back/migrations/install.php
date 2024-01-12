@@ -4,10 +4,12 @@ use Business\Product\Rule\ProductCategoryRule;
 use Business\Product\Rule\ProductRule;
 use Business\Register\Entity\UserEntity;
 use Business\Register\Repository\UserRepository;
+use Business\Register\Rule\CustomerRule;
 use Business\Register\Rule\UserRule;
 use Helpers\StringHelper;
 
 UserRule::install();
+CustomerRule::install();
 ProductCategoryRule::install();
 ProductRule::install();
 
