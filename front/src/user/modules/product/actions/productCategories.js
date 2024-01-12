@@ -48,7 +48,7 @@ let callProductCategoryViewGet = (id) => (dispatch) => {
 
 let callProductCategoryPost = (data, success = () => { }) => (dispatch) => {
     dispatch(callLoader(true))
-    Api.post('/product/category', data).then((data) => {
+    Api.post('/product/category?urldecode=1', data).then((data) => {
         dispatch(callLoader(false))
         if (!data)
             return
@@ -60,7 +60,7 @@ let callProductCategoryPost = (data, success = () => { }) => (dispatch) => {
 
 let callProductCategoryPut = (id, data, success = () => { }) => (dispatch) => {
     dispatch(callLoader(true))
-    Api.put('/product/category/' + id, data).then((data) => {
+    Api.put('/product/category/' + id + '?urldecode=1', data).then((data) => {
         dispatch(callLoader(false))
         if (!data)
             return

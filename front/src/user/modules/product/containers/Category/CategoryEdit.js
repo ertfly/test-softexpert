@@ -65,8 +65,8 @@ let UserEdit = ({ setPageAttr, methods: { callProductCategoryPost, callProductCa
         e.preventDefault()
 
         let data = {
-            name,
-            fee,
+            name: encodeURI(name),
+            fee: encodeURI(fee),
         }
 
         if (!id) {

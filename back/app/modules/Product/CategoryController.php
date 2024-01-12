@@ -51,9 +51,11 @@ class CategoryController
 
     public function post()
     {
-        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED]);
+        $urldecode = RequestHelper::get('urldecode') ? true : false;
 
-        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED]);
+        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED], [], $urldecode);
+
+        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED], [], $urldecode);
         $fee = NumberHelper::toDecimal($fee, 2);
         $fee = doubleval($fee) / doubleval(100);
 
@@ -70,14 +72,16 @@ class CategoryController
 
     public function put($id)
     {
+        $urldecode = RequestHelper::get('urldecode') ? true : false;
+
         $row = ProductCategoryRepository::byId($id);
         if (!$row->getId() || $row->getTrash()) {
             throw new Exception('Registro não encontrado!');
         }
 
-        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED]);
+        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED], [], $urldecode);
 
-        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED]);
+        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED], [], $urldecode);
         $fee = NumberHelper::toDecimal($fee, 2);
         $fee = doubleval($fee) / doubleval(100);
 

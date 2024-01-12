@@ -48,7 +48,7 @@ let callUserViewGet = (id) => (dispatch) => {
 
 let callUserPost = (data, success = () => { }) => (dispatch) => {
     dispatch(callLoader(true))
-    Api.post('/user', data).then((data) => {
+    Api.post('/user?urldecode=1', data).then((data) => {
         dispatch(callLoader(false))
         if (!data)
             return
@@ -60,7 +60,7 @@ let callUserPost = (data, success = () => { }) => (dispatch) => {
 
 let callUserPut = (id, data, success = () => { }) => (dispatch) => {
     dispatch(callLoader(true))
-    Api.put('/user/' + id, data).then((data) => {
+    Api.put('/user/' + id + '?urldecode=1', data).then((data) => {
         dispatch(callLoader(false))
         if (!data)
             return

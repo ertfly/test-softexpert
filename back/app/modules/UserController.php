@@ -51,16 +51,18 @@ class UserController
 
     public function post()
     {
-        $fullname = RequestHelper::json('fullname', 'Nome Completo', [FormValidationHelper::REQUIRED]);
-        $email = RequestHelper::json('email', 'E-mail', [FormValidationHelper::REQUIRED, FormValidationHelper::EMAIL]);
+        $urldecode = RequestHelper::get('urldecode') ? true : false;
+
+        $fullname = RequestHelper::json('fullname', 'Nome Completo', [FormValidationHelper::REQUIRED], null, $urldecode);
+        $email = RequestHelper::json('email', 'E-mail', [FormValidationHelper::REQUIRED, FormValidationHelper::EMAIL], null, $urldecode);
 
         $checkEmail = UserRepository::byEmail($email);
         if ($checkEmail->getId()) {
             throw new Exception('E-mail informado já possue cadastro!');
         }
 
-        $pass = RequestHelper::json('pass', 'Senha', [FormValidationHelper::REQUIRED]);
-        $passConfirm = RequestHelper::json('passConfirm', 'Confirmação da Senha', [FormValidationHelper::REQUIRED]);
+        $pass = RequestHelper::json('pass', 'Senha', [FormValidationHelper::REQUIRED], null, $urldecode);
+        $passConfirm = RequestHelper::json('passConfirm', 'Confirmação da Senha', [FormValidationHelper::REQUIRED], null, $urldecode);
 
         if (StringHelper::password($pass) !== StringHelper::password($passConfirm)) {
             throw new Exception('Confirmação de senha inválido!');
@@ -80,20 +82,22 @@ class UserController
 
     public function put($id)
     {
+        $urldecode = RequestHelper::get('urldecode') ? true : false;
+
         $row = UserRepository::byId($id);
         if (!$row->getId()) {
             throw new Exception('Registro não encontrado!');
         }
 
-        $fullname = RequestHelper::json('fullname', 'Nome Completo', [FormValidationHelper::REQUIRED]);
-        $email = RequestHelper::json('email', 'E-mail', [FormValidationHelper::REQUIRED, FormValidationHelper::EMAIL]);
+        $fullname = RequestHelper::json('fullname', 'Nome Completo', [FormValidationHelper::REQUIRED], null, $urldecode);
+        $email = RequestHelper::json('email', 'E-mail', [FormValidationHelper::REQUIRED, FormValidationHelper::EMAIL], null, $urldecode);
 
         $checkEmail = UserRepository::byEmail($email);
         if ($checkEmail->getId() && $checkEmail->getId() != $row->getId()) {
             throw new Exception('E-mail informado já possue cadastro!');
         }
-        
-        $pass = RequestHelper::json('pass');
+
+        $pass = RequestHelper::json('pass', null, null, null, $urldecode);
         $passConfirm = RequestHelper::json('passConfirm');
         if (StringHelper::null($pass) && StringHelper::null($passConfirm)) {
             if (StringHelper::password($pass) !== StringHelper::password($passConfirm)) {

@@ -68,10 +68,10 @@ let UserEdit = ({ setPageAttr, methods: { callUserPost, callUserViewGet, callUse
         e.preventDefault()
 
         let data = {
-            fullname,
-            email,
-            pass,
-            passConfirm
+            fullname: encodeURI(fullname),
+            email: encodeURI(email),
+            pass: encodeURI(pass),
+            passConfirm: encodeURI(passConfirm)
         }
 
         if (!id) {
