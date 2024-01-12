@@ -26,5 +26,12 @@ return [
             'put:/user/{id}' => 'put',
             'delete:/user/{id}' => 'delete',
         ],
+        \App\Modules\Product\CategoryController::class => [
+            'get:/product/category' => 'index',
+            'get:/product/category/{id}' => 'view',
+            'post:/product/category' => 'post',
+            'put:/product/category/{id}' => 'put',
+            'delete:/product/category/{id}' => 'delete',
+        ],
     ],
 ];

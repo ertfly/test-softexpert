@@ -38,10 +38,13 @@ class ProductCategoryEntity extends EntityHelper
 
         return $this;
     }
-    public function getFee()
+    public function getFee($format = false)
     {
-        if(is_null($this->fee)){
+        if (is_null($this->fee)) {
             $this->fee = doubleval(0);
+        }
+        if ($format) {
+            return number_format((doubleval($this->fee) * doubleval(100)), 2, ',', '.');
         }
         return $this->fee;
     }
