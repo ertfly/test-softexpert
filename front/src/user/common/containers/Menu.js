@@ -12,6 +12,11 @@ const Menu = () => {
             icon: 'fas fa-home',
             to: '/',
         },
+        {
+            label: 'Usuários',
+            icon: 'fas fa-users',
+            to: '/users',
+        },
     ], [])
 
     const openMain = (e, ai) => {

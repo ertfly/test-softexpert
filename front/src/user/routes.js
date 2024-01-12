@@ -1,3 +1,3 @@
-// import ProductRoutes from "./modules/products/routes"
+import RegisterRoutes from "./modules/register/routes"
 
-export default []/* .concat(FindRoutes) */
+export default [].concat(RegisterRoutes)

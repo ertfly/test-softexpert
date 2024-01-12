@@ -25,6 +25,13 @@ class UserRule
             ->setUpdatedAt(DateHelper::now())
             ->update();
     }
+    public static function destroy(UserEntity &$record)
+    {
+        if (!$record->getId()) {
+            throw new Exception('Esse método serve alterar registros e não inserir');
+        }
+        $record->destroy();
+    }
     public static function install()
     {
         $db = DatabaseHelper::getInstance();

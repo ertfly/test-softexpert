@@ -18,4 +18,13 @@ return [
             'options:/{a}/{b}/{c}' => 'options'
         ],
     ],
+    \App\Middlewares\AuthMiddleware::class => [
+        \App\Modules\UserController::class => [
+            'get:/user' => 'index',
+            'get:/user/{id}' => 'view',
+            'post:/user' => 'post',
+            'put:/user/{id}' => 'put',
+            'delete:/user/{id}' => 'delete',
+        ],
+    ],
 ];
