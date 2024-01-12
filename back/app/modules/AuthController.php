@@ -17,8 +17,8 @@ class AuthController
         $name = '';
         $logged = false;
 
-        $user = UserRepository::byId(SessionHelper::item('user.id'));
-        if($user->getId()){
+        $user = UserRepository::byId(sessionItem('user.id', null));
+        if ($user->getId()) {
             $name = $user->getFullname(true);
             $logged = true;
         }
@@ -51,7 +51,7 @@ class AuthController
                 'logged' => true,
             ]);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage(), ResponseConstant::NOT_ACTION);
+            responseApiError(new Exception($e->getMessage(), ResponseConstant::NOT_ACTION));
         }
     }
 

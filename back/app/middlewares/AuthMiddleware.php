@@ -21,7 +21,7 @@ class AuthMiddleware
         SessionHelper::init('api', RequestHelper::getHeader('token'));
         SessionHelper::data('accessIp', $_SERVER['REMOTE_ADDR'] ?? null);
 
-        $user = UserRepository::byId(SessionHelper::item('user.id'));
+        $user = UserRepository::byId(sessionItem('user.id', null));
         if (!$user->getId()) {
             responseApiError(new Exception('Sua sessão foi finalizada, realize o acesso novamente!', ResponseConstant::LOGIN));
         }
