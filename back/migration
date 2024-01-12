@@ -1,0 +1,37 @@
+<?php
+
+date_default_timezone_set(getenv('TZ'));
+
+if (!getenv('PATH_ROOT')) {
+    throw new Exception('PATH_ROOT is not .env');
+}
+
+if (!getenv('PATH_MIGRATIONS')) {
+    throw new Exception('PATH_MIGRATIONS is not .env');
+}
+
+require getenv('PATH_ROOT') . 'vendor/autoload.php';
+require getenv('PATH_ROOT') . 'helpers/Helper.php';
+
+$version = 0;
+if (is_file(getenv('PATH_MIGRATIONS') . 'version')) {
+    $version = intval(file_get_contents(getenv('PATH_MIGRATIONS') . 'version'));
+} else {
+    require_once getenv('PATH_ROOT') . 'migrations/install.php';
+}
+
+if ($version === 0) {
+    $loop = true;
+    while ($loop) {
+        if (!is_file(getenv('PATH_MIGRATIONS') . ($version + 1) . '.php')) {
+            $loop = false;
+            break;
+        }
+        $version = ($version + 1);
+        require_once getenv('PATH_ROOT') . 'migrations/' . $version . '.php';
+    }
+}
+
+file_put_contents(getenv('PATH_MIGRATIONS') . 'version', $version);
+
+exit('Migration Success' . chr(10));
