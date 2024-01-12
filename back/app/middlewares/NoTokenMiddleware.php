@@ -10,6 +10,7 @@ class NoTokenMiddleware
 {
     public static function handler()
     {
+        applyCors();
         if (RequestHelper::getHeader('appKey') != getenv('APP_KEY')) {
             responseApiError((new Exception('credentials invalid', ResponseConstant::NOT_ACTION)));
         }
