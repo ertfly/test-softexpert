@@ -12,5 +12,10 @@ return [
         \App\Modules\TokenController::class => [
             'post:/token' => 'post'
         ],
+        \App\Modules\CorsController::class => [
+            'options:/{a}' => 'options',
+            'options:/{a}/{b}' => 'options',
+            'options:/{a}/{b}/{c}' => 'options'
+        ],
     ],
 ];
