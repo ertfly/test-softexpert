@@ -14,8 +14,8 @@ let Dashboard = () => {
     )
 }
 
-const mapStateToProps = ({ find: { searchWarnings } }) => ({
-    myResults: searchWarnings.list,
+const mapStateToProps = ({  }) => ({
+    
 });
 
 const mapDispatchToProps = (dispatch) => ({
