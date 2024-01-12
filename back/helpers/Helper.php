@@ -61,7 +61,7 @@ function urlAbsolute($name = null, ?array $getParams = null, array $exclude = []
 
 function sessionItem($key, $defaultValue = null, $delete = false)
 {
-    $value = SessionHelper::item('action', $delete);
+    $value = SessionHelper::item($key, $delete);
     if (!$value) {
         return $defaultValue;
     }
