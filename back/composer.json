@@ -9,5 +9,8 @@
           "Business\\": "business/",
           "Helpers\\": "helpers/"
         }
+    },
+    "require": {
+        "catfan/medoo": "^1.7"
     }
 }
