@@ -6,6 +6,7 @@ use Business\Register\Entity\UserEntity;
 use Business\Register\Repository\UserRepository;
 use Business\Register\Rule\CustomerRule;
 use Business\Register\Rule\UserRule;
+use Business\Sale\Rule\OrderItemRule;
 use Business\Sale\Rule\OrderRule;
 use Helpers\StringHelper;
 
@@ -14,6 +15,7 @@ CustomerRule::install();
 ProductCategoryRule::install();
 ProductRule::install();
 OrderRule::install();
+OrderItemRule::install();
 
 // add user default
 $fullname = 'User Test';
@@ -23,7 +25,7 @@ $user = UserRepository::byEmail($email)
     ->setFullname($fullname)
     ->setEmail($email)
     ->setPass($pass);
-    
+
 if (!$user->getId()) {
     $user->insert();
 } else {
