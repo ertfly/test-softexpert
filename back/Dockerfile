@@ -16,4 +16,4 @@ RUN chmod +x /usr/bin/php
 COPY . .
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-CMD bash -c "composer install && php -S 0.0.0.0:8000 -t public"
+CMD bash -c "composer install && php migration && php -S 0.0.0.0:8000 -t public"
