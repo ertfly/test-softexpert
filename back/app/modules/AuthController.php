@@ -3,20 +3,28 @@
 namespace App\Modules;
 
 use App\Constants\ResponseConstant;
+use Business\Register\Repository\UserRepository;
 use Exception;
 use Helpers\FormValidation\FormValidationHelper;
 use Helpers\RequestHelper;
 use Helpers\SessionHelper;
+use Helpers\StringHelper;
 
 class AuthController
 {
     public function get()
     {
-        $name = SessionHelper::item('user.name');
-        $logged = SessionHelper::item('user.id') ? true : false;
-            
+        $name = '';
+        $logged = false;
+
+        $user = UserRepository::byId(SessionHelper::item('user.id'));
+        if($user->getId()){
+            $name = $user->getFullname(true);
+            $logged = true;
+        }
+
         responseApi([
-            'name' => $name ? $name : '',
+            'name' => $name,
             'logged' => $logged,
         ]);
     }
@@ -27,12 +35,19 @@ class AuthController
             $email = RequestHelper::json('email', 'E-mail', [FormValidationHelper::REQUIRED, FormValidationHelper::EMAIL]);
             $pass = RequestHelper::json('pass', 'Senha', [FormValidationHelper::REQUIRED]);
 
-            $name = 'Eric';
-            SessionHelper::data('user.name', $name);
-            SessionHelper::data('user.id', '1');
+            $user = UserRepository::byEmail($email);
+            if (!$user->getId()) {
+                throw new Exception('Usuário ou Senha inválido.');
+            }
+
+            if (StringHelper::password($pass) != $user->getPass()) {
+                throw new Exception('Usuário ou Senha inválido.');
+            }
+
+            SessionHelper::data('user.id', $user->getId());
 
             responseApi([
-                'name' => $name,
+                'name' => $user->getFullname(true),
                 'logged' => true,
             ]);
         } catch (Exception $e) {
@@ -42,7 +57,6 @@ class AuthController
 
     public function delete()
     {
-        SessionHelper::delete('user.name');
         SessionHelper::delete('user.id');
         responseApi([]);
     }
