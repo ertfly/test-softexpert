@@ -54,4 +54,4 @@ docker-compose build
 docker-compose up
 ```
 
-> **_NOTA:_**  When vendor or node_modules error use zip files in folder back and front.
+> **_NOTA:_**  When vendor or node_modules install error, use zip files in folder back and front.
