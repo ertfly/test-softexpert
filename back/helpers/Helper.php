@@ -80,7 +80,7 @@ function sessionItem($key, $defaultValue = null, $delete = false)
 function responseApi(array $data, $code = 0, $msg = 'Success')
 {
     DatabaseHelper::closeInstance();
-    
+
     ResponseHelper::json([
         'response' => [
             'code' => $code,
@@ -111,4 +111,13 @@ function responseApiError(\Exception $e)
         ],
         'data' => null,
     ]);
+}
+
+function applyCors()
+{
+    header('Access-Control-Allow-Origin: ' . getenv('ORIGIN'));
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Allow-Headers: Content-Type, Origin, token, appKey');
+    header('Access-Control-Max-Age: 86400');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 }
