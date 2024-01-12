@@ -1,4 +1,4 @@
-import { ACTION_USER_LIST, ACTION_USER_SELECT, ACTION_USER_VIEW } from "../actions/users";
+import { ACTION_USER_LIST, ACTION_USER_VIEW } from "../actions/users";
 
 let initialReducer = {
     users: {
