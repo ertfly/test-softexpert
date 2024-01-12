@@ -1,0 +1,121 @@
+.wrapper-office .container-login {
+    height: 100%;
+    background-image: url(./../../../../../public/assets/img/bg-admin.png);
+    background-position: -100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrapper-office .container-login .sdk {
+    flex: 1;
+    background-color: #f8f9fa;
+}
+
+.wrapper-office .container-login .sdk .logo img {
+    min-height: 30px;
+}
+
+.wrapper-office .container-login .sdk h2 {
+    color: #f2f2f2;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1.13px;
+    line-height: 44px;
+    font-size: 36px;
+}
+
+.wrapper-office .container-login .authfast-sdk .login {
+    max-width: 100% !important;
+}
+
+.wrapper-office .container-login .authfast-sdk .login input,
+.wrapper-office .container-login .authfast-sdk .login select {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0;
+    padding: 14px 14px;
+    transition: 0.2s all ease;
+    height: auto !important;
+}
+
+.wrapper-office .container-login .authfast-sdk .login .pass {
+    border-right-width: 0;
+}
+
+.wrapper-office .container-login .authfast-sdk .login a small {
+    color: #495057;
+}
+
+.wrapper-office .container-login .authfast-sdk .login a:hover {
+    color: #495057;
+}
+
+.wrapper-office .container-login .authfast-sdk .brand {
+    width: auto !important;
+    border-left-width: 0;
+    padding-right: 14px !important;
+}
+
+.wrapper-office .container-login .authfast-sdk .brand span {
+    font-weight: 800;
+}
+
+.wrapper-office .container-login .authfast-sdk .hide-pass {
+    width: auto !important;
+    border-left-width: 0 !important;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    width: 57px !important;
+}
+
+.wrapper-office .container-login .shadow-video {
+    flex: 3;
+    box-shadow: inset 0px 0px 10px 0 rgba(0,0,0,0.5);
+}
+
+.wrapper-office .container-login .login .bg-input {
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da !important;
+    color: #495057;
+    border: none;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.wrapper-office .container-login .login .bg-input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #495057;
+    opacity: 1;
+    /* Firefox */
+}
+
+.wrapper-office .container-login .login .bg-input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #495057;
+}
+
+.wrapper-office .container-login .login .bg-input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #495057;
+}
+
+@media (max-width: 767px) {
+    .wrapper-office .container-login {
+        flex-direction: column;
+    }
+
+    .wrapper-office .container-login .sdk {
+        padding: 40px 20px 40px;
+    }
+
+    .wrapper-office .container-login .sdk h2 {
+        font-size: 28px;
+    }
+
+    .wrapper-office .container-login .authfast-sdk {
+        width: 90%;
+    }
+}
