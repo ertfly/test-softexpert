@@ -1,5 +1,18 @@
 version: '2'
 services:
+  db:
+    container_name: test.db
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: Test@3661
+    volumes:
+      - ./.db/:/var/lib/postgresql/data
+
   web:
     container_name: test.api
     build: ./back
@@ -15,19 +28,6 @@ services:
       - '8.8.4.4'
     depends_on:
       - db
-      
-  db:
-    container_name: test.db
-    image: postgres
-    restart: always
-    ports:
-      - '5432:5432'
-    environment:
-      POSTGRES_DB: test
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: Test@3661
-    volumes:
-      - ./.db/:/var/lib/postgresql/data
 
   front:
     container_name: test.front
