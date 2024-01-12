@@ -53,9 +53,9 @@ class CategoryController
     {
         $urldecode = RequestHelper::get('urldecode') ? true : false;
 
-        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED], [], $urldecode);
+        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED], null, $urldecode);
 
-        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED], [], $urldecode);
+        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED], null, $urldecode);
         $fee = NumberHelper::toDecimal($fee, 2);
         $fee = doubleval($fee) / doubleval(100);
 
@@ -79,9 +79,9 @@ class CategoryController
             throw new Exception('Registro não encontrado!');
         }
 
-        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED], [], $urldecode);
+        $name = RequestHelper::json('name', 'Nome', [FormValidationHelper::REQUIRED], null, $urldecode);
 
-        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED], [], $urldecode);
+        $fee = RequestHelper::json('fee', 'Taxa', [FormValidationHelper::REQUIRED], null, $urldecode);
         $fee = NumberHelper::toDecimal($fee, 2);
         $fee = doubleval($fee) / doubleval(100);
 
@@ -108,5 +108,22 @@ class CategoryController
         responseApi([
             'msg' => 'Registro excluído com sucesso!'
         ]);
+    }
+
+    public function select()
+    {
+        $rows = [];
+        $filter = [];
+        foreach (ProductCategoryRepository::all($filter) as $a) {
+            /**
+             * @var ProductCategoryEntity $a
+             */
+
+            $rows[] = [
+                'id' => $a->getId(),
+                'description' => $a->getName(),
+            ];
+        }
+        responseApi($rows);
     }
 }

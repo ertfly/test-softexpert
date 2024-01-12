@@ -11,7 +11,7 @@ use Helpers\StringHelper;
 
 class ProductEntity extends EntityHelper
 {
-    const TABLE = 'product_categories';
+    const TABLE = 'products';
 
     protected $id;
     protected $category_id;

@@ -19,6 +19,11 @@ let ACTION_PRODUCT_CATEGORY_VIEW = {
     },
 };
 
+let ACTION_PRODUCT_CATEGORY_SELECT = {
+    type: 'PRODUCT_CATEGORY_SELECT',
+    payload: [],
+};
+
 let callProductCategoryListGet = (filter = {}, pg = 1) => (dispatch) => {
     dispatch(callLoader(true))
     Api.get('/product/category?pg=' + pg).then((data) => {
@@ -88,4 +93,16 @@ let callProductCategoryDelete = (id, success = () => { }) => (dispatch) => {
     })
 }
 
-export { callProductCategoryListGet, callProductCategoryViewGet, callProductCategoryPost, callProductCategoryPut, callProductCategoryDelete, callProductCategoryClearView, ACTION_PRODUCT_CATEGORY_LIST, ACTION_PRODUCT_CATEGORY_VIEW }
+let callProductCategorySelectGet = (filter = {}) => (dispatch) => {
+    dispatch(callLoader(true))
+    Api.get('/product/category/select').then((data) => {
+        dispatch(callLoader(false))
+        if (!data)
+            return
+
+        ACTION_PRODUCT_CATEGORY_SELECT.payload = data
+        dispatch(ACTION_PRODUCT_CATEGORY_SELECT)
+    })
+}
+
+export { callProductCategoryListGet, callProductCategoryViewGet, callProductCategoryPost, callProductCategoryPut, callProductCategoryDelete, callProductCategoryClearView, callProductCategorySelectGet, ACTION_PRODUCT_CATEGORY_LIST, ACTION_PRODUCT_CATEGORY_VIEW, ACTION_PRODUCT_CATEGORY_SELECT }

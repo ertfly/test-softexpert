@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux"
 import { callProductCategoryViewGet, callProductCategoryPost, callProductCategoryPut } from "../../actions/productCategories"
 import InputMask from "../../../../../common/containers/InputMask"
 
-let UserEdit = ({ setPageAttr, methods: { callProductCategoryPost, callProductCategoryViewGet, callProductCategoryPut }, view }) => {
+let ProductEdit = ({ setPageAttr, methods: { callProductCategoryPost, callProductCategoryViewGet, callProductCategoryPut }, view }) => {
     const params = useParams()
     const [id] = useState(!params.id ? '' : params.id)
     const [name, setName] = useState('')
@@ -115,4 +115,4 @@ const mapDispatchToProps = (dispatch) => ({
     )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductEdit)

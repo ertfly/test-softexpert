@@ -28,10 +28,18 @@ return [
         ],
         \App\Modules\Product\CategoryController::class => [
             'get:/product/category' => 'index',
+            'get:/product/category/select' => 'select',
             'get:/product/category/{id}' => 'view',
             'post:/product/category' => 'post',
             'put:/product/category/{id}' => 'put',
             'delete:/product/category/{id}' => 'delete',
+        ],
+        \App\Modules\Product\ProductController::class => [
+            'get:/product' => 'index',
+            'get:/product/{id}' => 'view',
+            'post:/product' => 'post',
+            'put:/product/{id}' => 'put',
+            'delete:/product/{id}' => 'delete',
         ],
     ],
 ];
