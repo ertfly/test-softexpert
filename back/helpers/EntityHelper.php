@@ -20,7 +20,7 @@ abstract class EntityHelper
     public function insert()
     {
         if (!$this->getId()) {
-            $this->setId(StringHelper::guidV4());
+            $this->setId(StringHelper::newGuid());
         }
 
         DatabaseHelper::getInstance()

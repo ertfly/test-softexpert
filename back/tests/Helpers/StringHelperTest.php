@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 
 namespace Tests\Helpers;
 
@@ -7,6 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class StringHelperTest extends TestCase
 {
+    public function testShouldUniqueToken()
+    {
+        $token1 = StringHelper::token();
+        $token2 = StringHelper::token();
+        $this->assertNotEquals($token1, $token2);
+    }
     public function testShouldIsNotNull()
     {
         $this->assertNotNull(StringHelper::null('test'));

@@ -15,10 +15,10 @@ class StringHelper
         return mb_convert_case(hash('sha256', $str), MB_CASE_UPPER);
     }
 
-    public static function guidV4($data = null)
+    public static function newGuid()
     {
         // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
-        $data = $data ?? random_bytes(16);
+        $data = random_bytes(16);
         assert(strlen($data) == 16);
 
         // Set version to 0100
