@@ -4,6 +4,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install curl dom gd mbstring pdo pdo_mysql pdo_pgsql pgsql simplexml soap tidy zip sockets intl mysqli bcmath
 RUN pecl install mcrypt && docker-php-ext-enable mcrypt
+RUN pecl install pcov && docker-php-ext-enable pcov
 RUN mkdir /app
 WORKDIR /app
 COPY .docker/php.ini /usr/local/etc/php/php.ini

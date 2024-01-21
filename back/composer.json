@@ -7,10 +7,14 @@
           "App\\Modules\\": "app/modules/",
           "App\\Middlewares\\": "app/middlewares/",
           "Business\\": "business/",
-          "Helpers\\": "helpers/"
+          "Helpers\\": "helpers/",
+          "Tests\\": "tests/"
         }
     },
     "require": {
         "catfan/medoo": "^1.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
     }
 }
