@@ -21,4 +21,18 @@ class StringHelperTest extends TestCase
         $this->assertNull(StringHelper::null(''));
         $this->assertNull(StringHelper::null(null));
     }
+
+    public function testShouldPasswordEqual()
+    {
+        $pass1 = StringHelper::password('123456');
+        $pass2 = StringHelper::password('123456');
+        $this->assertEquals($pass1, $pass2);
+    }
+
+    public function testShouldPasswordNotEqual()
+    {
+        $pass1 = StringHelper::password('123456');
+        $pass2 = StringHelper::password('654321');
+        $this->assertNotEquals($pass1, $pass2);
+    }
 }
