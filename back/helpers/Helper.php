@@ -12,7 +12,7 @@ use Helpers\SessionHelper;
  * @param array ...$methods Default methods
  * @return array|string|null
  */
-function input($index = null, $defaultValue = null, $method)
+function input($index = null, $defaultValue = null, $method = null)
 {
     $value = null;
     if ($index !== null) {
