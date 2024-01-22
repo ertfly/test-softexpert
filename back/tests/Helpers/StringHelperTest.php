@@ -57,4 +57,15 @@ class StringHelperTest extends TestCase
     {
         $this->assertEquals('Helpers\FormValidation', StringHelper::parentFolderByClass(FormValidationHelper::class));
     }
+
+    public function testShouldRemoveInvisibleCharacters()
+    {
+        $this->assertEquals('test', StringHelper::removeInvisibleCharacters('te' . chr(0) . 'st'));
+    }
+
+    public function testShouldFormatCpfCnpj()
+    {
+        $this->assertEquals('123.456.789-01', StringHelper::formatCpfCnpj('12345678901'));
+        $this->assertEquals('12.345.678/9012-34', StringHelper::formatCpfCnpj('12345678901234'));
+    }
 }
