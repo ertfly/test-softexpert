@@ -24,12 +24,12 @@ class UserTest extends TestCase
 
         $checkUser = UserRepository::byId($user->getId());
 
-        /* $hasCreated = false;
+        $hasCreated = false;
         if ($checkUser->getId()) {
             $hasCreated = true;
-        } */
+        }
         $db->pdo->rollBack();
         
-        $this->assertTrue(true);
+        $this->assertTrue($hasCreated);
     }
 }
