@@ -89,4 +89,12 @@ class StringHelperTest extends TestCase
         $this->assertEquals('ao', StringHelper::removeAccents('ÃÕ'));
         $this->assertEquals('aeiou', StringHelper::removeAccents('ÄËÏÖÜ'));
     }
+
+    public function testShouldOnlyNumber()
+    {
+        $this->assertEquals('1234567890', StringHelper::onlyNumber('1234567890'));
+        $this->assertEquals('1234567890', StringHelper::onlyNumber('1234567890a'));
+        $this->assertEquals('1234567890', StringHelper::onlyNumber('a1234567890'));
+        $this->assertEquals('1234567890', StringHelper::onlyNumber('a1234567890a'));
+    }
 }

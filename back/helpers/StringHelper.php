@@ -95,11 +95,6 @@ class StringHelper
         );
         return str_replace($find, $replace, $string);
     }
-    public static function lastUri($uri)
-    {
-        $arr = explode('/', $uri);
-        return $arr[count($arr) - 1];
-    }
     public static function onlyNumber($str)
     {
         return preg_replace("/[^0-9]/", "", $str);
