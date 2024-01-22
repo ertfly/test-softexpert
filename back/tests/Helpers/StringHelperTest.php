@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Tests\Helpers;
 
@@ -40,5 +40,15 @@ class StringHelperTest extends TestCase
         $pass1 = StringHelper::password('123456');
         $pass2 = StringHelper::password('654321');
         $this->assertNotEquals($pass1, $pass2);
+    }
+
+    public function testShoudNewGuid()
+    {
+        $isGuid = false;
+        if (preg_match("/^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$/", StringHelper::newGuid())) {
+            $isGuid = true;
+        }
+
+        $this->assertTrue($isGuid);
     }
 }
