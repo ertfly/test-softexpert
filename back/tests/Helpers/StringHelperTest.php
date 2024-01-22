@@ -75,4 +75,18 @@ class StringHelperTest extends TestCase
         $this->assertEquals('test-test', StringHelper::uri('test test'));
         $this->assertEquals('test-test', StringHelper::uri('test-test'));
     }
+
+    public function testShouldRemoveAccents()
+    {
+        $this->assertEquals('aeiou', StringHelper::removeAccents('áéíóú'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('àèìòù'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('âêîôû'));
+        $this->assertEquals('ao', StringHelper::removeAccents('ãõ'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('äëïöü'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('ÁÉÍÓÚ'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('ÀÈÌÒÙ'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('ÂÊÎÔÛ'));
+        $this->assertEquals('ao', StringHelper::removeAccents('ÃÕ'));
+        $this->assertEquals('aeiou', StringHelper::removeAccents('ÄËÏÖÜ'));
+    }
 }
