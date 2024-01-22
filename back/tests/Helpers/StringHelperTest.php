@@ -68,4 +68,11 @@ class StringHelperTest extends TestCase
         $this->assertEquals('123.456.789-01', StringHelper::formatCpfCnpj('12345678901'));
         $this->assertEquals('12.345.678/9012-34', StringHelper::formatCpfCnpj('12345678901234'));
     }
+
+    public function testShouldUri()
+    {
+        $this->assertEquals('test', StringHelper::uri('test'));
+        $this->assertEquals('test-test', StringHelper::uri('test test'));
+        $this->assertEquals('test-test', StringHelper::uri('test-test'));
+    }
 }
