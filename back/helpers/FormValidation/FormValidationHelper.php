@@ -51,7 +51,7 @@ class FormValidationHelper
             if (!is_string($validation)) {
                 throw new \Exception('Tipo de validação informada não existe, informe string usando constantes');
             }
-            $validationClass = StringHelper::classToClass(self::class) . '\\Validations\\' . $validation;
+            $validationClass = StringHelper::parentFolderByClass(self::class) . '\\Validations\\' . $validation;
             if (!class_exists($validationClass)) {
                 throw new \Exception('Tipo de validação informada não existe, informe string usando constantes');
             }

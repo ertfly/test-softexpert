@@ -30,7 +30,7 @@ class StringHelper
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
 
-    public static function classToClass($classname)
+    public static function parentFolderByClass($classname)
     {
         $arr = explode('\\', $classname);
         unset($arr[count($arr) - 1]);
