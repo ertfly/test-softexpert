@@ -62,3 +62,8 @@ docker-compose up
 Email: test@test.com
 Password: 123456
 ```
+
+# Run tests
+```
+docker-compose exec web ./vendor/bin/phpunit
+```
