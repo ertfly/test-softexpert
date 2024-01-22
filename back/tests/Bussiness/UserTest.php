@@ -23,13 +23,29 @@ class UserTest extends TestCase
         $user->insert();
 
         $checkUser = UserRepository::byId($user->getId());
-
-        $hasCreated = false;
-        if ($checkUser->getId()) {
-            $hasCreated = true;
-        }
+        $this->assertEquals($user->getId(), $checkUser->getId());
         $db->pdo->rollBack();
-        
-        $this->assertTrue($hasCreated);
+    }
+
+    public function testShouldUpdateUser()
+    {
+        $db = DatabaseHelper::getInstance();
+        $db->pdo->beginTransaction();
+
+        $user = (new UserEntity)
+            ->setFullname('Test Fullname')
+            ->setEmail('test@test.com')
+            ->setPass(StringHelper::password('123456'));
+
+        $user->insert();
+
+        $userUpdater = UserRepository::byId($user->getId());
+
+        $userUpdater->setEmail('change@test.com');
+        $userUpdater->update();
+
+        $checkUser = UserRepository::byId($user->getId());
+        $this->assertNotEquals($checkUser->getEmail(), $user->getEmail());
+        $db->pdo->rollBack();
     }
 }
