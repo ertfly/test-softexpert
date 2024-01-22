@@ -50,7 +50,7 @@ class UserRepository
      * @param integer $perPage
      * @return PaginationHelper
      */
-    public static function allWithPagination($filters = array(), $page, $perPage = 12, $orderBy = ' a.fullname asc ')
+    public static function allWithPagination($filters = array(), $page = 1, $perPage = 12, $orderBy = ' a.fullname asc ')
     {
         $db = DatabaseHelper::getInstance();
 
