@@ -13,7 +13,6 @@ use Exception;
 class RequestHelper
 {
 
-    private static $post;
     private static $routineData;
 
     public static function get($key, $description = null, $validations = null, $options = null, $decodeUri = false)
@@ -72,12 +71,6 @@ class RequestHelper
 
     public static function posts($decodeUri = false)
     {
-        if (is_null(self::$post)) {
-            self::$post = FormHelper::getPost();
-        }
-        if (self::$post) {
-            $_POST = self::$post;
-        }
         if (!isset($_POST)) {
             return array();
         }
@@ -87,13 +80,6 @@ class RequestHelper
 
     public static function post($key, $description = null, $validations = null, $options = null, $decodeUri= false)
     {
-        if (is_null(self::$post)) {
-            self::$post = FormHelper::getPost();
-        }
-        if (self::$post) {
-            $_POST = self::$post;
-        }
-
         if (!isset($_POST[$key]) && !isset($description)) {
             return null;
         }
