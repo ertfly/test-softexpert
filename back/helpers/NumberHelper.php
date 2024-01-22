@@ -23,7 +23,7 @@ class NumberHelper
             $before = str_replace('.', '', str_replace(',', '', $match[1]));
             $after = $match[2];
         }
-        return number_format($before . '.' . $after, $dec, '.', '');
+        return doubleval(number_format($before . '.' . $after, $dec, '.', ''));
     }
 
     public static function intNull($var)
