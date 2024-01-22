@@ -136,13 +136,6 @@ class StringHelper
             return html_entity_decode('&#' . $cp . ';');
         }, $str);
     }
-
-    public static function sanitizeFileName($string): string
-    {
-
-        $sanitized_string = preg_replace('/[\/\:*?"<>|]/', '', $string);
-        return trim($sanitized_string);
-    }
     public static function formatCep($cep)
     {
         $cep = self::onlyNumber($cep);

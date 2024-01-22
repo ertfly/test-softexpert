@@ -14,20 +14,6 @@ class StringHelperTest extends TestCase
         $token2 = StringHelper::token();
         $this->assertNotEquals($token1, $token2);
     }
-    public function testShouldIsNotNull()
-    {
-        $this->assertNotNull(StringHelper::null('test'));
-        $this->assertNotNull(StringHelper::null(0));
-        $this->assertNotNull(StringHelper::null(0.3));
-        $this->assertNotNull(StringHelper::null(false));
-        $this->assertNotNull(StringHelper::null(true));
-    }
-
-    public function testShouldIsNull()
-    {
-        $this->assertNull(StringHelper::null(''));
-        $this->assertNull(StringHelper::null(null));
-    }
 
     public function testShouldPasswordEqual()
     {
@@ -96,5 +82,31 @@ class StringHelperTest extends TestCase
         $this->assertEquals('1234567890', StringHelper::onlyNumber('1234567890a'));
         $this->assertEquals('1234567890', StringHelper::onlyNumber('a1234567890'));
         $this->assertEquals('1234567890', StringHelper::onlyNumber('a1234567890a'));
+    }
+
+    public function testShouldFormatCep()
+    {
+        $this->assertEquals('12.345-678', StringHelper::formatCep('12345678'));
+    }
+
+    public function testShouldFormatTelefoneOuCelular()
+    {
+        $this->assertEquals('(12) 3456-7890', StringHelper::formatTelefoneOuCelular('1234567890'));
+        $this->assertEquals('(12) 34567-8901', StringHelper::formatTelefoneOuCelular('12345678901'));
+    }
+    
+    public function testShouldIsNotNull()
+    {
+        $this->assertNotNull(StringHelper::null('test'));
+        $this->assertNotNull(StringHelper::null(0));
+        $this->assertNotNull(StringHelper::null(0.3));
+        $this->assertNotNull(StringHelper::null(false));
+        $this->assertNotNull(StringHelper::null(true));
+    }
+
+    public function testShouldIsNull()
+    {
+        $this->assertNull(StringHelper::null(''));
+        $this->assertNull(StringHelper::null(null));
     }
 }
